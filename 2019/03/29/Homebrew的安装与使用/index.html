@@ -168,63 +168,68 @@
 <p>安装honmebrew可以去<a href="https://brew.sh/index_zh-cn" target="_blank" rel="noopener">homebrew官网</a>查看命令</p>
 <p>执行<code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
 <p>执行安装代码如下：</p>
-<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-==&gt; This script will install:
+<pre class=" language-bash"><code class="language-bash">/usr/bin/ruby -e <span class="token string">"<span class="token variable"><span class="token variable">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="token variable">)</span></span>"</span>
+<span class="token operator">==</span><span class="token operator">></span> This script will install:
 /usr/local/bin/brew
 /usr/local/share/doc/homebrew
 /usr/local/share/man/man1/brew.1
 /usr/local/share/zsh/site-functions/_brew
 /usr/local/etc/bash_completion.d/brew
 /usr/local/Homebrew
-==&gt; The Xcode Command Line Tools will be installed.
+<span class="token operator">==</span><span class="token operator">></span> The Xcode Command Line Tools will be installed.
 
-Press RETURN to continue or any other key to abort
-==&gt; Searching online for the Command Line Tools
-==&gt; /usr/bin/sudo /usr/bin/touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+Press RETURN to <span class="token keyword">continue</span> or any other key to abort
+<span class="token operator">==</span><span class="token operator">></span> Searching online <span class="token keyword">for</span> the Command Line Tools
+<span class="token operator">==</span><span class="token operator">></span> /usr/bin/sudo /usr/bin/touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
 Password:
-==&gt; Installing Command Line Tools (macOS Mojave version 10.14) for Xcode-10.2
-==&gt; /usr/bin/sudo /usr/sbin/softwareupdate -i Command\ Line\ Tools\ (macOS\ Mojave\ version\ 10.14)\ for\ Xcode-10.2
+<span class="token operator">==</span><span class="token operator">></span> Installing Command Line Tools <span class="token punctuation">(</span>macOS Mojave version 10.14<span class="token punctuation">)</span> <span class="token keyword">for</span> Xcode-10.2
+<span class="token operator">==</span><span class="token operator">></span> /usr/bin/sudo /usr/sbin/softwareupdate -i Command\ Line\ Tools\ <span class="token punctuation">(</span>macOS\ Mojave\ version\ 10.14<span class="token punctuation">)</span>\ for\ Xcode-10.2
 Software Update Tool
 
 
-Downloaded Command Line Tools (macOS Mojave version 10.14) for Xcode
-Installing Command Line Tools (macOS Mojave version 10.14) for Xcode
-Done with Command Line Tools (macOS Mojave version 10.14) for Xcode
+Downloaded Command Line Tools <span class="token punctuation">(</span>macOS Mojave version 10.14<span class="token punctuation">)</span> <span class="token keyword">for</span> Xcode
+Installing Command Line Tools <span class="token punctuation">(</span>macOS Mojave version 10.14<span class="token punctuation">)</span> <span class="token keyword">for</span> Xcode
+Done with Command Line Tools <span class="token punctuation">(</span>macOS Mojave version 10.14<span class="token punctuation">)</span> <span class="token keyword">for</span> Xcode
 Done.
-==&gt; /usr/bin/sudo /bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
-==&gt; /usr/bin/sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
-==&gt; Downloading and installing Homebrew...
+<span class="token operator">==</span><span class="token operator">></span> /usr/bin/sudo /bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+<span class="token operator">==</span><span class="token operator">></span> /usr/bin/sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
+<span class="token operator">==</span><span class="token operator">></span> Downloading and installing Homebrew<span class="token punctuation">..</span>.
 remote: Enumerating objects: 33, done.
-remote: Counting objects: 100% (33/33), done.
-remote: Compressing objects: 100% (27/27), done.
-Receiving objects:  12% (15162/120868), 4.52 MiB | 54.00 KiB/s     
+remote: Counting objects: 100% <span class="token punctuation">(</span>33/33<span class="token punctuation">)</span>, done.
+remote: Compressing objects: 100% <span class="token punctuation">(</span>27/27<span class="token punctuation">)</span>, done.
+Receiving objects:  12% <span class="token punctuation">(</span>15162/120868<span class="token punctuation">)</span>, 4.52 MiB <span class="token operator">|</span> 54.00 KiB/s     
 
-</code></pre><h2 id="出现报错与解决"><a href="#出现报错与解决" class="headerlink" title="出现报错与解决"></a>出现报错与解决</h2><p>在安装中间可能会出现以下错误：</p>
-<pre><code>==&gt; Tapping homebrew/core
-Cloning into &#39;/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core&#39;...
-fatal: unable to access &#39;https://github.com/Homebrew/homebrew-core/&#39;: transfer closed with outstanding read data remaining
-Error: Failure while executing; `git clone https://github.com/Homebrew/homebrew-core /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=1` exited with 128.
-Error: Failure while executing; `/usr/local/bin/brew tap homebrew/core` exited with 1.
-</code></pre><p>我们可以执行接下来的代码来解决：</p>
-<pre><code>// 执行下面这句命令，更换为中科院的镜像：
-git clone git://mirrors.ustc.edu.cn/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=1
+</code></pre>
+<h2 id="出现报错与解决"><a href="#出现报错与解决" class="headerlink" title="出现报错与解决"></a>出现报错与解决</h2><p>在安装中间可能会出现以下错误：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token operator">==</span><span class="token operator">></span> Tapping homebrew/core
+Cloning into <span class="token string">'/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core'</span><span class="token punctuation">..</span>.
+fatal: unable to access <span class="token string">'https://github.com/Homebrew/homebrew-core/'</span><span class="token keyword">:</span> transfer closed with outstanding <span class="token function">read</span> data remaining
+Error: Failure <span class="token keyword">while</span> executing<span class="token punctuation">;</span> <span class="token variable"><span class="token variable">`</span><span class="token function">git</span> clone https://github.com/Homebrew/homebrew-core /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth<span class="token operator">=</span>1<span class="token variable">`</span></span> exited with 128.
+Error: Failure <span class="token keyword">while</span> executing<span class="token punctuation">;</span> <span class="token variable"><span class="token variable">`</span>/usr/local/bin/brew tap homebrew/core<span class="token variable">`</span></span> exited with 1.
+</code></pre>
+<p>我们可以执行接下来的代码来解决：</p>
+<pre class=" language-bash"><code class="language-bash">// 执行下面这句命令，更换为中科院的镜像：
+<span class="token function">git</span> clone git://mirrors.ustc.edu.cn/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth<span class="token operator">=</span>1
 
 // 把homebrew-core的镜像地址也设为中科院的国内镜像
 
-cd &quot;$(brew --repo)&quot; 
+<span class="token function">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>"</span> 
 
-git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+<span class="token function">git</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
 
-cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot; 
+<span class="token function">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>/Library/Taps/homebrew/homebrew-core"</span> 
 
-git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+<span class="token function">git</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
 
 // 更新
 brew update
-</code></pre><h2 id="检查版本"><a href="#检查版本" class="headerlink" title="检查版本"></a>检查版本</h2><pre><code>brew -v
-</code></pre><h2 id="使用Homebrew"><a href="#使用Homebrew" class="headerlink" title="使用Homebrew"></a>使用Homebrew</h2><h3 id="举例：安装yarn"><a href="#举例：安装yarn" class="headerlink" title="举例：安装yarn"></a>举例：安装yarn</h3><p>执行以下代码，安装yarn</p>
-<pre><code>brew install yarn
 </code></pre>
+<h2 id="检查版本"><a href="#检查版本" class="headerlink" title="检查版本"></a>检查版本</h2><pre class=" language-bash"><code class="language-bash">brew -v
+</code></pre>
+<h2 id="使用Homebrew"><a href="#使用Homebrew" class="headerlink" title="使用Homebrew"></a>使用Homebrew</h2><h3 id="举例：安装yarn"><a href="#举例：安装yarn" class="headerlink" title="举例：安装yarn"></a>举例：安装yarn</h3><p>执行以下代码，安装yarn</p>
+<pre class=" language-bash"><code class="language-bash">brew <span class="token function">install</span> yarn
+</code></pre>
+
             </div>
 
             <!-- Post Comments -->
