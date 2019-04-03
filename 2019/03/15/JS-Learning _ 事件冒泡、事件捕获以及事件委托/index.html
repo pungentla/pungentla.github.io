@@ -6,7 +6,7 @@
 	<link rel="shortcut icon" href="/img/logo_miccall.png">
 	
 			    <title>
-    Hexo
+    Pungentla
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -96,7 +96,7 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="category-link" href="/categories/Javascript-Learning/">Javascript-Learning</a>
+	                        <a class="category-link" href="/categories/JS-Learning/">JS-Learning</a>
 	                    </li></ul>
 	        </li>
 	        
@@ -166,7 +166,17 @@
             <div class="typo" style="padding: 3rem;">
                 <p>想要了解事件冒泡、事件捕获以及事件委托的概念，我们需要先了解一下什么是事件流。</p>
 <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>事件流描述的是<strong>从页面中接收事件的顺序</strong>。<br>比如说，如果你单击了某个按钮，我们则认为在单击按钮的同时，你也单击了按钮的容器元素，甚至也单击了整个页面。IE和Netscape开发团队就提出了两个完全相反的事件流的概念。IE的事件流是<strong>事件冒泡流</strong>，而Netscap Communicator的事件流是<strong>事件捕获流</strong>。</p>
-<h1 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h1><p>事件冒泡，即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Event Bubbling Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDiv&gt;Click Me&lt;/div&gt;</span></span></span><br><span class="line"><span class="tag"><span class="string">&lt;/body&gt;</span></span></span><br><span class="line"><span class="tag"><span class="string">&lt;/html&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h1 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h1><p>事件冒泡，即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
+<pre class=" language-html"><code class="language-html">    <span class="token doctype">&lt;!DOCTYPE html></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Event Bubbling Example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        &lt;div id="myDiv>Click Me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
 <p>如果你单击了页面中的<code>&lt;div&gt;</code>元素，那么这个click事件会按照如下顺序传播：<br>1.<code>&lt;div&gt;</code><br>2.<code>&lt;body&gt;</code><br>3.<code>&lt;html&gt;</code><br>4.<code>document</code><br>下图展示了事件冒泡的过程。<br><img src="https://img-blog.csdnimg.cn/20190315210747967.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTM2ODgz,size_16,color_FFFFFF,t_70" alt="事件冒泡"><br>click事件就沿着DOM树向上传播，在每一级节点都会发生，直至传播到document对象。</p>
 <h1 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h1><p>事件捕获的思想则是不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。<br>以前面的HTML页面为例，单击页面中的<code>&lt;div&gt;</code>元素就会以下列顺序触发click事件：<br>1.<code>document</code><br>2.<code>&lt;html&gt;</code><br>3.<code>&lt;body&gt;</code><br>4.<code>&lt;div&gt;</code><br>下图展示了事件捕获过程。<br><img src="https://img-blog.csdnimg.cn/20190315210839138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTM2ODgz,size_16,color_FFFFFF,t_70" alt="事件捕获"><br>在事件捕获过程中，document对象首先接收到click事件，然后事件沿DOM树依次向下，一直传播到事件的实际目标，即<code>&lt;div&gt;</code>元素。</p>
 <h1 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h1><p>“DOM2级事件”规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。<br>以前面的HTML页面为例，单击<code>&lt;div&gt;</code>元素会按照下图所示顺序触发事件。<br><img src="https://img-blog.csdnimg.cn/20190315210911367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTM2ODgz,size_16,color_FFFFFF,t_70" alt="DOM事件流"></p>
