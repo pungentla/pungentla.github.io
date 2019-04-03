@@ -96,7 +96,7 @@
 	            <a href="#s1">分类</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="category-link" href="/categories/JS-Learning/">JS-Learning</a>
+	                        <a class="category-link" href="/categories/JS-Learning/">JS-Learning</a></li><li><a class="category-link" href="/categories/Py-Learning/">Py-Learning</a></li><li><a class="category-link" href="/categories/React/">React</a></li><li><a class="category-link" href="/categories/computer-network/">computer network</a></li><li><a class="category-link" href="/categories/tool/">tool</a>
 	                    </li></ul>
 	        </li>
 	        
@@ -106,7 +106,7 @@
 	            <a href="#s1">归档</a>
 	                    <ul class="submenu">
 	                        <li>
-	                        <a class="archive-link" href="/archives/2019/04/">April 2019</a></li><li><a class="archive-link" href="/archives/2019/03/">March 2019</a>
+	                        <a class="archive-link" href="/archives/2019/03/">March 2019</a>
 	                    </li></ul>
 	        </li>
 	        
@@ -159,37 +159,72 @@
 </nav>
 
         <div id="main">
-            <div class="post_page_title_img" style="height: 25rem;background-image: url(http://miccall.oss-cn-beijing.aliyuncs.com/18-11-21/69686800.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>JS-Learning  | 事件冒泡、事件捕获以及事件委托</h2></a>
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(http://img.cndesign.com/Works/20151204/3f8fa97564d24151ac6076855799b8ec.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Homebrew的安装与使用</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>想要了解事件冒泡、事件捕获以及事件委托的概念，我们需要先了解一下什么是事件流。</p>
-<h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>事件流描述的是<strong>从页面中接收事件的顺序</strong>。<br>比如说，如果你单击了某个按钮，我们则认为在单击按钮的同时，你也单击了按钮的容器元素，甚至也单击了整个页面。IE和Netscape开发团队就提出了两个完全相反的事件流的概念。IE的事件流是<strong>事件冒泡流</strong>，而Netscap Communicator的事件流是<strong>事件捕获流</strong>。</p>
-<h1 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h1><p>事件冒泡，即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
-<pre class=" language-html"><code class="language-html">    <span class="token doctype">&lt;!DOCTYPE html></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Event Bubbling Example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-        &lt;div id="myDiv>Click Me<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
-<p>如果你单击了页面中的<code>&lt;div&gt;</code>元素，那么这个click事件会按照如下顺序传播：<br>1.<code>&lt;div&gt;</code><br>2.<code>&lt;body&gt;</code><br>3.<code>&lt;html&gt;</code><br>4.<code>document</code><br>下图展示了事件冒泡的过程。<br><img src="https://img-blog.csdnimg.cn/20190315210747967.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTM2ODgz,size_16,color_FFFFFF,t_70" alt="事件冒泡"><br>click事件就沿着DOM树向上传播，在每一级节点都会发生，直至传播到document对象。</p>
-<h1 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h1><p>事件捕获的思想则是不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。<br>以前面的HTML页面为例，单击页面中的<code>&lt;div&gt;</code>元素就会以下列顺序触发click事件：<br>1.<code>document</code><br>2.<code>&lt;html&gt;</code><br>3.<code>&lt;body&gt;</code><br>4.<code>&lt;div&gt;</code><br>下图展示了事件捕获过程。<br><img src="https://img-blog.csdnimg.cn/20190315210839138.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTM2ODgz,size_16,color_FFFFFF,t_70" alt="事件捕获"><br>在事件捕获过程中，document对象首先接收到click事件，然后事件沿DOM树依次向下，一直传播到事件的实际目标，即<code>&lt;div&gt;</code>元素。</p>
-<h1 id="DOM事件流"><a href="#DOM事件流" class="headerlink" title="DOM事件流"></a>DOM事件流</h1><p>“DOM2级事件”规定的事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段。<br>以前面的HTML页面为例，单击<code>&lt;div&gt;</code>元素会按照下图所示顺序触发事件。<br><img src="https://img-blog.csdnimg.cn/20190315210911367.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTM2ODgz,size_16,color_FFFFFF,t_70" alt="DOM事件流"></p>
-<p>在DOM事件流中，实际的目标在捕获阶段不会接收到事件。这意味着在捕获阶段，事件从document到<code>&lt;html&gt;</code>再到<code>&lt;body&gt;</code>后就停止了。下一阶段是“处于目标”阶段，于是事件在<code>&lt;div&gt;</code>上发生，并在事件处理中被看成冒泡阶段的一部分。然后，冒泡阶段发生，事件又传播回文档。</p>
-<h1 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h1><p>事件委托是一种对“事件处理程序过多”问题的解决方案。==事件委托利用了事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件==。例如，click事件会一直冒泡到document层次。也就是说，我们可以为整个页面指定一个onclick事件处理程序，而不必给每个可单击的元素分别添加事件处理程序。</p>
-<p>我们可以为document对象添加一个事件处理程序，用以处理页面上发生的某种特定类型的事件。这样做有以下几点==优点==：</p>
-<ul>
-<li><strong>document对象很快就可以访问</strong>，而且可以在页面生命周期的任何时点上为它添加事件处理程序。</li>
-<li>在页面中<strong>设置事件处理程序所需的时间更少</strong>。只添加一个事件处理程序所需的DOM引用更少，所花的时间也更少。</li>
-<li>整个页面占用的<strong>内存空间更少</strong>，能够提升整体性能。</li>
-</ul>
-<p>最适合采用事件委托技术的事件包括click、mousedown、mouseup、keydown、keyup 和 keypress。</p>
+                <h1 id="Homebrew"><a href="#Homebrew" class="headerlink" title="Homebrew"></a>Homebrew</h1><p>Homebrew是macOS 缺失的软件包的管理器，使用它可以安装 Apple 没有预装但你需要的东西。</p>
+<p>安装honmebrew可以去<a href="https://brew.sh/index_zh-cn" target="_blank" rel="noopener">homebrew官网</a>查看命令</p>
+<p>执行<code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+<p>执行安装代码如下：</p>
+<pre><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+==&gt; This script will install:
+/usr/local/bin/brew
+/usr/local/share/doc/homebrew
+/usr/local/share/man/man1/brew.1
+/usr/local/share/zsh/site-functions/_brew
+/usr/local/etc/bash_completion.d/brew
+/usr/local/Homebrew
+==&gt; The Xcode Command Line Tools will be installed.
 
+Press RETURN to continue or any other key to abort
+==&gt; Searching online for the Command Line Tools
+==&gt; /usr/bin/sudo /usr/bin/touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+Password:
+==&gt; Installing Command Line Tools (macOS Mojave version 10.14) for Xcode-10.2
+==&gt; /usr/bin/sudo /usr/sbin/softwareupdate -i Command\ Line\ Tools\ (macOS\ Mojave\ version\ 10.14)\ for\ Xcode-10.2
+Software Update Tool
+
+
+Downloaded Command Line Tools (macOS Mojave version 10.14) for Xcode
+Installing Command Line Tools (macOS Mojave version 10.14) for Xcode
+Done with Command Line Tools (macOS Mojave version 10.14) for Xcode
+Done.
+==&gt; /usr/bin/sudo /bin/rm -f /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+==&gt; /usr/bin/sudo /usr/bin/xcode-select --switch /Library/Developer/CommandLineTools
+==&gt; Downloading and installing Homebrew...
+remote: Enumerating objects: 33, done.
+remote: Counting objects: 100% (33/33), done.
+remote: Compressing objects: 100% (27/27), done.
+Receiving objects:  12% (15162/120868), 4.52 MiB | 54.00 KiB/s     
+
+</code></pre><h2 id="出现报错与解决"><a href="#出现报错与解决" class="headerlink" title="出现报错与解决"></a>出现报错与解决</h2><p>在安装中间可能会出现以下错误：</p>
+<pre><code>==&gt; Tapping homebrew/core
+Cloning into &#39;/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core&#39;...
+fatal: unable to access &#39;https://github.com/Homebrew/homebrew-core/&#39;: transfer closed with outstanding read data remaining
+Error: Failure while executing; `git clone https://github.com/Homebrew/homebrew-core /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=1` exited with 128.
+Error: Failure while executing; `/usr/local/bin/brew tap homebrew/core` exited with 1.
+</code></pre><p>我们可以执行接下来的代码来解决：</p>
+<pre><code>// 执行下面这句命令，更换为中科院的镜像：
+git clone git://mirrors.ustc.edu.cn/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=1
+
+// 把homebrew-core的镜像地址也设为中科院的国内镜像
+
+cd &quot;$(brew --repo)&quot; 
+
+git remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot; 
+
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+
+// 更新
+brew update
+</code></pre><h2 id="检查版本"><a href="#检查版本" class="headerlink" title="检查版本"></a>检查版本</h2><pre><code>brew -v
+</code></pre><h2 id="使用Homebrew"><a href="#使用Homebrew" class="headerlink" title="使用Homebrew"></a>使用Homebrew</h2><h3 id="举例：安装yarn"><a href="#举例：安装yarn" class="headerlink" title="举例：安装yarn"></a>举例：安装yarn</h3><p>执行以下代码，安装yarn</p>
+<pre><code>brew install yarn
+</code></pre>
             </div>
 
             <!-- Post Comments -->
@@ -251,8 +286,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/03/15/JS-Learning _ 事件冒泡、事件捕获以及事件委托/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/2019/03/15/JS-Learning _ 事件冒泡、事件捕获以及事件委托/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2019/03/29/Homebrew的安装与使用/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/03/29/Homebrew的安装与使用/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
