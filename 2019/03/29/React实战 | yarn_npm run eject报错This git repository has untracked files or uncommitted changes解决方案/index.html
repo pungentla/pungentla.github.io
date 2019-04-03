@@ -159,24 +159,26 @@
 </nav>
 
         <div id="main">
-            <div class="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Hello World</h2></a>
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(http://img.pconline.com.cn/images/upload/upc/tx/photoblog/1204/02/c4/11126955_11126955_1333379339241.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>React实战 | yarn_npm run eject报错This git repository has untracked files or uncommitted changes解决方案</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="yarn-npm-run-eject"><a href="#yarn-npm-run-eject" class="headerlink" title="yarn/npm run eject"></a>yarn/npm run eject</h1><p>使用create-react-app 创建的项目默认<code>不支持less</code>，但比如说要用AntDesign，它是基于less的UI组件。<br>create-react-app生成的项目文，看不到webpack相关的配置文件，需要先==暴露==出来，使用如下命令即可：</p>
+<pre><code>yarn run eject
+</code></pre><p>这里我使用的是yarn，也可以使用npm</p>
+<h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><p> 使用该命令时，报错<code>This git repository has untracked files or uncommitted changes</code></p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p> 因为在初始化项目之后，该项目并==没有本地 git 仓库==，但是这个项目目录下又有 .gitignore 文件，所以此时会向上级寻找未提交的项目。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li>初始化仓库</li>
+</ol>
+<pre><code>git init
+</code></pre><ol start="2">
+<li>添加并提交</li>
+</ol>
+<pre><code>git add .
+git commit -m &#39;初始化项目&#39;
+</code></pre><p>之后重新执行<code>yarn eject</code>就可以在create-react-app项目添加less配置</p>
 
             </div>
 
@@ -239,8 +241,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/about/index.html';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/about/index.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2019/03/29/React实战 | yarn_npm run eject报错This git repository has untracked files or uncommitted changes解决方案/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/03/29/React实战 | yarn_npm run eject报错This git repository has untracked files or uncommitted changes解决方案/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 

@@ -159,24 +159,31 @@
 </nav>
 
         <div id="main">
-            <div class="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Hello World</h2></a>
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(http://p.chanyouji.cn/18537/1357280330555p17g23cc98v1n9nn170v3fskgl4.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Python-Learning | Tushare获取股票交易数据的使用方法</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+                <h1 id="Tushare"><a href="#Tushare" class="headerlink" title="Tushare"></a>Tushare</h1><p> Tushare是一个免费、开源的python财经数据接口包。主要实现对股票等金融数据从数据采集、清洗加工到数据存储的过程，能够为金融分析人员提供快速、整洁和多样的便于分析的数据，为他们在数据获取方面极大地减轻工作量，使他们更加专注于策略和模型的研究与实现上。tushare拥有以下==特性==：</p>
+<ul>
+<li><strong>数据丰富</strong>：<br>tushare拥有丰富的数据内容，如股票、基金、期货、数字货币等行情数据，公司财务、基金经理等基本面数据</li>
+<li><strong>获取简单</strong>：<br>SDK开发包支持语言，同时提供HTTP Restful接口，最大程度方便不同人群的使用</li>
+<li><strong>落地方便</strong>：<br>提供多种数据储存方式，如Oracle、MySQL，MongoDB、HDF5、CSV等，为数据获取提供了性能保证</li>
+</ul>
+<h1 id="获取Tushare数据"><a href="#获取Tushare数据" class="headerlink" title="获取Tushare数据"></a>获取Tushare数据</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
+<li>安装python（注意tushare不支持python3.7版本）</li>
+<li>安装pandas，我是直接安装的Anaconda，包含有pandas。建议安装Anaconda，更方便。</li>
+<li>安装tushare模块，可直接输入命令pip install tushare</li>
+</ol>
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><p>这里可以查看<a href="https://tushare.pro/document/2" target="_blank" rel="noopener">tushare官网（数据接口）</a>，各种数据接口都可以查看接口名和输入输出参数以及样例。<br>这里需要注意的是，获取数据需要<code>token验证</code>，要先注册并登陆后，在==个人主页》接口TOKEN》复制==后使用该token。<br>有需要的朋友可以点击该链接进行注册<a href="https://tushare.pro/register?reg=247661" target="_blank" rel="noopener">https://tushare.pro/register?reg=247661</a>，成功注册一个用户即可获得50积分，有的数据是有积分需求的。</p>
+<p>举个例子：获取沪深股票日线行情，接口名：daily</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> tushare <span class="token keyword">as</span> ts
+ts<span class="token punctuation">.</span>set_token<span class="token punctuation">(</span><span class="token string">'你的token数据'</span><span class="token punctuation">)</span>
+pro <span class="token operator">=</span> ts<span class="token punctuation">.</span>pro_api<span class="token punctuation">(</span><span class="token punctuation">)</span>
+df <span class="token operator">=</span> pro<span class="token punctuation">.</span>daily<span class="token punctuation">(</span>ts_code<span class="token operator">=</span><span class="token string">'000001.SZ'</span><span class="token punctuation">,</span> start_date<span class="token operator">=</span><span class="token string">'20180701'</span><span class="token punctuation">,</span> end_date<span class="token operator">=</span><span class="token string">'20180718'</span><span class="token punctuation">)</span>
+df<span class="token punctuation">.</span>to_excel<span class="token punctuation">(</span><span class="token string">'.../.../1.xlsx'</span><span class="token punctuation">)</span> <span class="token operator">//</span> 储存数据在本地的某个excel文件中
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p> 结果如下图：<br><img src="https://img-blog.csdnimg.cn/2019032114113113.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1NTM2ODgz,size_16,color_FFFFFF,t_70" alt="导出数据的excel表格"><br>如果需要保存在csv文件也可以使用df.to_csv(…/…/1.csv)</p>
 
             </div>
 
@@ -239,8 +246,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/about/index.html';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/about/index.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2019/03/21/python-Learning | Tushare获取股票交易数据的使用方法/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/03/21/python-Learning | Tushare获取股票交易数据的使用方法/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 

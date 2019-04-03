@@ -159,24 +159,56 @@
 </nav>
 
         <div id="main">
-            <div class="post_page_title_img" style="height: 25rem;background-image: url();background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>Hello World</h2></a>
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(http://miccall.oss-cn-beijing.aliyuncs.com/18-11-21/69686800.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>JS-Learning | 数据类型（基本类型和引用类型的定义与检测）</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+                <p>JavaScript变量<code>松散类型</code>的本质，决定了它只是在特定时间用于保存特定值的一个名字而已，可以理解为变量占了一个坑，具体填的是黄金还是泥土就要看自身造化了……</p>
+<p>ECMAScript变量可能包含两种不同数据类型的值：<code>基本类型值</code>和<code>引用类型值</code>。基本类型值指的是简单的数据段，而引用类型值指那些可能由多个值构成的对象。</p>
+<h1 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h1><p>基本数据类型有六种：Undefined、Null、Boolean、Number、String和Symbol。<br>这五种基本数据类型是==按值访问==的，因为可以操作保存在变量中的实际的值。<br>基本数据类型比较简单，这里提供一些注意点：</p>
+<ul>
+<li><strong>Undefined类型</strong>：只有一个值（即undefined），变量声明但未对其初始化，该变量的值就是undefined。</li>
+<li><strong>Null类型</strong>：只有一个值（即null），null值表示一个空对象指针。</li>
+</ul>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">null</span> <span class="token operator">==</span> undefined         <span class="token comment" spellcheck="true">// true</span>
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
+<ul>
+<li><p><strong>Boolean类型</strong>：只有两个字面值（即true和false）。</p>
+<p>  转型函数Boolean（）</p>
+</li>
+<li><strong>Number类型</strong>：使用IEEE754格式来表示整数和浮点数值，其中有一个特殊数值NaN，用于表示一个本来要返回数值的操作数但未返回数值的情况。</li>
+</ul>
+<pre class=" language-js"><code class="language-js"><span class="token number">NaN</span> <span class="token operator">==</span> <span class="token number">NaN</span>             <span class="token comment" spellcheck="true">// false</span>
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
+<p>   转型函数Number（）、parseInt（）、parseFloat（）</p>
+<ul>
+<li><strong>String类型</strong>：转型函数toString（）、String（）<br>null和undefined没有toString（）方法，所以用String（）函数可以返回这两个值的字面量。</li>
+</ul>
+<h2 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h2><p> 检测给定变量的数据类型，对一个值使用typeof操作符可能返回下列某个<code>字符串</code>：</p>
+<ul>
+<li>“undefined”——如果这个值未定义</li>
+<li>“boolean”——如果这个值是布尔值</li>
+<li>“string”——如果这个值是字符串</li>
+<li>“number”——如果这个值是数值</li>
+<li>“object”——如果这个值是<code>对象或null</code></li>
+<li>“function”——如果这个值是函数</li>
+</ul>
+<h1 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h1><p>引用类型的值是保存在内存中的对象，JavaScript不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。为此，引用类型的值是==按引用访问==的。<br>ECMAScript提供了很多原生引用类型：</p>
+<ul>
+<li><strong>Object类型</strong></li>
+<li><strong>Array类型</strong></li>
+<li><strong>Date类型</strong></li>
+<li><strong>RegExp类型</strong></li>
+<li><strong>Function类型</strong></li>
+<li><strong>基本包装类型</strong>：3个特殊的引用类型（<strong>Boolean、Number和String</strong>）<br>每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。自动创建的基本包装类型的对象只存在于一行代码的<code>执行瞬间</code>，然后立即被销毁，所以我们==不能在运行时为基本类型值添加属性和方法==。</li>
+<li><p><strong>单体内置对象：Global对象和Math对象</strong>。</p>
+<h2 id="instanceof操作符"><a href="#instanceof操作符" class="headerlink" title="instanceof操作符"></a>instanceof操作符</h2><p>在检测引用类型的值时，typeof操作符的用处就不大了。通常，我们并不是想知道某个值是对象，而是想知道它是什么类型的对象。为此，ECMAScript提供了instanceof操作符。语法如下：</p>
+</li>
+</ul>
+<pre class=" language-js"><code class="language-js">result <span class="token operator">=</span> variable <span class="token keyword">instanceof</span> <span class="token class-name">constructor</span>
 </code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p> ==所有引用类型的值都是Object的实例==，因此，在检测一个引用类型值和Object构造函数时，instanceof操作符始终会返回true。</p>
 
             </div>
 
@@ -239,8 +271,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/about/index.html';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/about/index.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2019/03/20/JS-Learning | 数据类型（基本类型和引用类型的定义与检测）/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/03/20/JS-Learning | 数据类型（基本类型和引用类型的定义与检测）/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
