@@ -159,64 +159,27 @@
 </nav>
 
         <div id="main">
-            <div class="post_page_title_img" style="height: 25rem;background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1555252736522&amp;di=fc83481609ce125f04790b6944b4bfa2&amp;imgtype=0&amp;src=http%3A%2F%2Ftc.sinaimg.cn%2Fmaxwidth.2048%2Ftc.service.weibo.com%2Fp%2Fjy_sccnn_com%2F9482ed1a3322b8e802433d1b5f7703e1.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>CSS-Learning | CSS中的定位模型：绝对定位、相对定位、固定定位和浮动（如何清除浮动）</h2></a>
+            <div class="post_page_title_img" style="height: 25rem;background-image: url(https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1555487596668&amp;di=4ff1f0f4dd2a8c1de399f7a1b0970bd1&amp;imgtype=0&amp;src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201603%2F07%2F20160307185608_JzUu5.jpeg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;">
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2>CSS-Learning | background-image属性如何设置背景图片以及相关背景图片语法</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <h1 id="定位模型"><a href="#定位模型" class="headerlink" title="定位模型"></a>定位模型</h1><p>CSS中有几种不同的定位模型，包括<code>浮动</code>、<code>绝对定位</code>、<code>相对定位</code>和<code>固定定位</code>。除非特别指定，否则所有元素盒子都会在常规文档流中生成，即positioin属性的默认值为static。常规文档流中元素盒子的位置，由元素在HTML中的位置决定。</p>
-<p>确定元素的包含块至关重要，定位模型不同，计算width、height、margin或padding值为百分比时，计算依据会发生变化。接下来，我们来看看不同定位模型以及与之对应的包含块。</p>
-<h2 id="相对定位-position-relative"><a href="#相对定位-position-relative" class="headerlink" title="相对定位 position: relative"></a>相对定位 position: relative</h2><p>使用相对定位，可以通过设置top、right、bottom和left属性，使该元素相对于它==在常规文档流的初始位置==平移一段距离。</p>
-<p>无论是否位移，相对定位的元素仍然会在文档流中==占用==初始的空间。因此，这样平移元素会导致它遮挡其他元素。</p>
-<h2 id="绝对定位-position-absolute"><a href="#绝对定位-position-absolute" class="headerlink" title="绝对定位 position: absolute"></a>绝对定位 position: absolute</h2><p>绝对定位会把元素拿出文档流，因此==不会占用==原来的空间，文档中的其他元素会各自重新定位，仿佛绝对定位的那个元素没有存在过一样。</p>
-<p>绝对定位元素的包含块是距离它==最近的定位祖先==，也就是display属性设置为static之外的任意值的祖先元素。如果没有这么一个定位祖先，那么它就相对于文档的根元素即html元素定位。文档的根元素也叫做<code>起始包含块</code>。</p>
-<h2 id="固定定位-position-fixed"><a href="#固定定位-position-fixed" class="headerlink" title="固定定位 position: fixed"></a>固定定位 position: fixed</h2><p>固定定位元素的包含块是<code>视口</code>（viewport）。因此固定定位可用于来创建始终停留在窗口相同位置的浮动元素。</p>
-<h2 id="浮动-float"><a href="#浮动-float" class="headerlink" title="浮动 float"></a>浮动 float</h2><p>浮动盒子可以向左或向右移动，直到其外边沿接触包含块的外边沿，或接触另一个浮动盒子的外边沿。</p>
-<p>浮动盒子也会脱离常规文档流，因此常规流中的其他块级盒子的表现，几乎当浮动盒子根本不存在一样。</p>
-<p>如果浮动元素后跟着的是常规文档流中的元素，那么这个元素的盒子就会当浮动盒子不存在一样，该怎么布局就怎么布局。但是，这个元素盒子中的<strong>文本内容</strong>则会记住浮动元素的大小，并在排布时避开它，为它留出相应的空间，造成<strong>文本环绕盒子</strong>的效果。</p>
-<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><p>想要阻止行盒子环绕在浮动盒子外面，需要给行盒子的元素应用<code>clear属性</code>。</p>
-<p>clear属性的值有left、right、both和none，用于指定盒子的哪一侧不应该紧挨着浮动盒子。</p>
-<p>因为浮动的元素被拿出文档流，包含它的块只包含浮动元素，就无法生成高度。怎么才能使块从视觉上也包住浮动元素？==需要在这个元素内部某处应用clear属性==。</p>
-<ol>
-<li>在结束的div标签前额外添加一个空元素，然后清除该元素。</li>
-</ol>
-<pre class=" language-html"><code class="language-html">.block {
-    background-color: gray;
-}
-.tag {
-    float: left;
-}
-.clear {
-    clear: both;
-}
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>block<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tag<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>浮动元素<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>clear<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span> // 添加额外的空div
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-</code></pre>
-<ol start="2">
-<li>使用:after伪类来模拟额外的清除元素。</li>
-</ol>
-<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.block</span> </span><span class="token punctuation">{</span>
-    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>
-    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
-    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<ol start="3">
-<li><p>设置overflow属性，生成块级格式化上下文(BFC，block formatting context)。因为块级格式化上下文自动包含浮动，允许元素创建自己内部的块级格式化上下文的规则：</p>
-<ul>
-<li>display属性值设置为inline-block或table-cell之类的元素，可以为内容创建类似块级的上下文；</li>
-<li>float属性值不是none的元素；</li>
-<li>绝对定位的元素；</li>
-<li>overflow属性值不是visible的元素；</li>
-</ul>
-</li>
-</ol>
-<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.block</span> </span><span class="token punctuation">{</span>
-    <span class="token property">overflow</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+                <h1 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h1><p>设置背景图片只需设置<strong>background-image属性</strong>，接受url()函数式表示法，可以使用<strong>相对路径</strong>，如url(img/cat.jpg)。浏览器此时会在保存当前样式表的目录的img子目标中寻找图片。<br>如果路径以一个斜杠开头，如/img/cat.jpg，则浏览器会在相对于CSS文件所在域的顶级目录的img子目录中寻找图片。</p>
+<p>这里也可以使用<strong>绝对路径</strong>，把协议、域名、路径和文件名都写全。</p>
+<p>除了相对路径和绝对路径，加载图片也可以不指向文件，而是在样式表中直接嵌入数据，即<strong>数据URI</strong>。</p>
+<p>由于只把图片设为背景图片，不能达到我们的预期，可以通过相关属性来优化。</p>
+<h1 id="背景图片语法"><a href="#背景图片语法" class="headerlink" title="背景图片语法"></a>背景图片语法</h1><h2 id="background-repeat属性"><a href="#background-repeat属性" class="headerlink" title="background-repeat属性"></a>background-repeat属性</h2><p><code>默认值为repeat</code>，意思是背景图片要沿x轴和y轴重复；<br>声明<code>repeat-x或repeat-y</code>来限定图片只沿某个轴的方向重复；<br><code>no-repeat</code>完全禁止重复；</p>
+<p>支持以空格分隔的针对两个方向的关键字声明语法；<br><code>space关键字</code>，如果（未经剪裁和缩放的）背景图片可以在元素内部完全重复两次以上，那么它就会重复相应的次数，重复的图片之间填充空白，从而让第一张和最后一张图片都紧挨着元素的边缘；<br><code>round关键字</code>，意味着图片会被缩放，从而切好能在元素中重复整数次。</p>
+<h2 id="background-position属性"><a href="#background-position属性" class="headerlink" title="background-position属性"></a>background-position属性</h2><p>既可以使用<code>关键字</code>，也可以使用<code>像素、em或百分比</code>。最简单的情况下，可以只给两个值：一个表示相对于左侧的偏移量，一个表示相对于顶部的偏移量。</p>
+<p>如果使用<strong>像素或em单位</strong>来设置背景图片的位置，那么图片的左上角会相对于元素的左上角定位，也就是会偏移指定的数值。</p>
+<p>如果设置背景图片的位置时使用了<strong>百分比</strong>，那么不会定位背景图片的左上角，而是定位图片中对应的点。</p>
+<p>使用<strong>关键字</strong>来对齐背景图片，要在x轴上用left、center或right，在y轴上用top、center或bottom。<br>新语法允许添加<strong>外边空声明</strong>，先写边界关键字，再写长度值。</p>
+<h2 id="background-clip属性"><a href="#background-clip属性" class="headerlink" title="background-clip属性"></a>background-clip属性</h2><p><code>默认值是border-box</code>，    背景被裁剪到边框盒。<br><code>padding-box</code>就可以把图片剪裁到内边距盒子以内。<br><code>content-box</code>会把图片位于内边距及其之外的部分裁剪掉。</p>
+<p>背景定位默认的原点仍然在代码中声明的内边距盒子的左上角。即定位值从元素边框内开始计算。但是，我们可以使用background-origin属性控制原点的位置。</p>
+<h2 id="background-origin属性"><a href="#background-origin属性" class="headerlink" title="background-origin属性"></a>background-origin属性</h2><p><code>border-box</code>：背景图像相对于边框盒来定位；<br><code>padding-box</code>：背景图像相对于内边距框来定位；<br><code>content-box</code>：背景图像相对于内容框来定位。</p>
+<h2 id="background-attachment属性"><a href="#background-attachment属性" class="headerlink" title="background-attachment属性"></a>background-attachment属性</h2><p><code>默认值scroll</code>，会让背景图片相对于元素本身固定；<br><code>fixed</code>，当页面的其余部分滚动时，背景图像不会移动。<br><code>local</code>，会让背景图片相对于元素中的内容固定。</p>
+<h2 id="background-size属性"><a href="#background-size属性" class="headerlink" title="background-size属性"></a>background-size属性</h2><p>给定<code>明确的值</code>，可以重新设置图片的大小，也可以使用百分比让图片随元素缩放而缩放。</p>
+<p><strong>关键字contain</strong>，这个值可以让浏览器尽可能保持图片最大化，同时不改变图片的宽高比。<br><strong>关键字cover</strong>，图片会缩放以保证覆盖元素的每一个像素，同时不会变形。</p>
 
             </div>
 
@@ -279,8 +242,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2019/04/14/CSS-Learning | CSS中的定位模型：绝对定位、相对定位、固定定位和浮动（如何清除浮动）/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/2019/04/14/CSS-Learning | CSS中的定位模型：绝对定位、相对定位、固定定位和浮动（如何清除浮动）/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2019/04/17/CSS-Learning | background-image属性如何设置背景图片以及相关背景图片语法/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2019/04/17/CSS-Learning | background-image属性如何设置背景图片以及相关背景图片语法/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
