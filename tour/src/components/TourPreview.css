@@ -1,0 +1,757 @@
+/* 旅游预览页面样式 */
+.tour-preview {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* 头部样式 */
+.tour-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tour-header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.tour-subtitle {
+  font-size: 1.2rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* 内容区域 */
+.tour-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* 时间线样式 */
+.timeline-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-section h2 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 25px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #3498db, #e74c3c);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px);
+}
+
+.timeline-item.active {
+  transform: translateX(10px);
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  background: #3498db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+  transition: all 0.3s ease;
+}
+
+.timeline-item.active .timeline-marker {
+  background: #e74c3c;
+  transform: scale(1.1);
+}
+
+.day-number {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.timeline-content {
+  margin-left: 70px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+.timeline-item.active .timeline-content {
+  border-left-color: #e74c3c;
+  background: #fff5f5;
+}
+
+/* 推荐标签样式 */
+.recommendations {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.recommendations h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+
+.recommendation-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recommendation-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.recommendation-tag.food {
+  background-color: #fff3e0;
+  color: #f57c00;
+  border-color: #ffcc80;
+}
+
+.recommendation-tag.food:hover {
+  background-color: #ffe0b2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 124, 0, 0.2);
+}
+
+.recommendation-tag.attraction {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+  border-color: #a5d6a7;
+}
+
+.recommendation-tag.attraction:hover {
+  background-color: #c8e6c9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+}
+
+/* 推荐详情弹窗样式 */
+.recommendation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.recommendation-modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 0 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.recommendation-header h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.recommendation-body {
+  padding: 0 20px 20px 20px;
+}
+
+.recommendation-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.recommendation-details {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.recommendation-map {
+  margin-bottom: 20px;
+}
+
+.recommendation-map h4 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.recommendation-shops h4 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.shop-card {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #fafafa;
+}
+
+.shop-card h5 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.shop-address {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.shop-specialties {
+  margin-bottom: 10px;
+}
+
+.shop-specialties strong {
+  font-size: 14px;
+  color: #333;
+  margin-right: 8px;
+}
+
+.specialty-tag {
+  display: inline-block;
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
+
+.recommendation-image {
+  margin-bottom: 15px;
+}
+
+.recommendation-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shop-image {
+  margin: 10px 0;
+}
+
+.shop-image img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shop-map {
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.timeline-content h3 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.transportation {
+  display: inline-block;
+  background: #27ae60;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.activities {
+  margin: 15px 0;
+}
+
+.activity {
+  margin: 8px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #ecf0f1;
+  font-size: 0.95rem;
+}
+
+.activity:last-child {
+  border-bottom: none;
+}
+
+.highlights {
+  margin-top: 15px;
+}
+
+.highlight-tag {
+  display: inline-block;
+  background: #3498db;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin: 2px 5px 2px 0;
+}
+
+/* 地图样式 */
+.map-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.map-section h2 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #e74c3c;
+  padding-bottom: 10px;
+}
+
+.map-container {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 弹窗样式 */
+.popup-content {
+  text-align: center;
+  min-width: 150px;
+}
+
+.popup-content h4 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.popup-content p {
+  margin: 5px 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.popup-highlights {
+  margin-top: 10px;
+}
+
+.popup-tag {
+  display: inline-block;
+  background: #e74c3c;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  margin: 1px 2px;
+}
+
+.popup-order {
+  background: #e74c3c;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* Attraction popup styles */
+.attraction-popup {
+  max-width: 300px;
+  text-align: left;
+}
+
+.attraction-description {
+  font-weight: 500;
+  color: #34495e;
+  margin-bottom: 12px;
+}
+
+.attraction-details {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px 0;
+  border-left: 3px solid #3498db;
+}
+
+.attraction-details p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.attraction-info {
+  margin: 10px 0;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  padding: 4px 0;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 12px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.attraction-highlights {
+  margin: 10px 0;
+}
+
+.highlights-label {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.highlights-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.highlights-tags .highlight-tag {
+  background: #e8f4fd;
+  color: #3498db;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.attraction-tips {
+  background: #fff3cd;
+  padding: 8px;
+  border-radius: 6px;
+  margin: 10px 0;
+  border-left: 3px solid #ffc107;
+}
+
+.tips-label {
+  font-size: 12px;
+  color: #856404;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.tips-content {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #856404;
+}
+
+/* 地图模式提示 */
+.map-mode-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.map-mode-indicator.detail-mode {
+  background: rgba(52, 152, 219, 0.9);
+}
+
+/* 时间线项目选中状态增强 */
+.timeline-item.active {
+  transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+}
+
+.timeline-item.active .timeline-content {
+  border-left-color: #e74c3c;
+  background: #fff5f5;
+  box-shadow: 0 3px 10px rgba(231, 76, 60, 0.1);
+}
+
+/* 亮点区域 */
+.highlights-section {
+  grid-column: 1 / -1;
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.highlights-section h2 {
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  border-bottom: 3px solid #f39c12;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.highlight-card {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.highlight-card:nth-child(2) {
+  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+  color: #2c3e50;
+}
+
+.highlight-card:nth-child(3) {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #2c3e50;
+}
+
+.highlight-card:nth-child(4) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.highlight-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+}
+
+.highlight-card p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .tour-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .tour-header h1 {
+    font-size: 2rem;
+  }
+  
+  .tour-subtitle {
+    font-size: 1rem;
+  }
+  
+  .timeline-section,
+  .map-section {
+    padding: 20px;
+  }
+  
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline-content {
+    margin-left: 60px;
+  }
+  
+  .timeline-marker {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .day-number {
+    font-size: 1rem;
+  }
+}
+
+/* Leaflet 地图样式调整 */
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+}
+
+.leaflet-popup-tip {
+  background: white;
+}
+
+.leaflet-control-zoom {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  border-radius: 0;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+}
+
+/* Highlight弹窗样式 */
+.highlight-tips-section {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border-left: 4px solid #17a2b8;
+}
+
+.highlight-tips-section h4 {
+  margin: 0 0 10px 0;
+  color: #17a2b8;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.highlight-tips-content {
+  margin: 0;
+  color: #495057;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* 增强highlight-tag的悬停效果 */
+.highlight-tag:hover {
+  background-color: #e3f2fd;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 增强popup-tag的悬停效果 */
+.popup-tag:hover {
+  background-color: #e3f2fd;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
