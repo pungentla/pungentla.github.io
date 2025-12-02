@@ -76,7 +76,7 @@ export default function BirthdayH5() {
         )}
         {step === 5 && <StepFinal onRestart={() => setStep(0)} onPrev={prev} />}
       </div>
-      <audio ref={bgRef} src="/bg-music.mp3" loop preload="auto" />
+      <audio ref={bgRef} src="bg-music.mp3" loop preload="none" />
     </div>
   );
 }
