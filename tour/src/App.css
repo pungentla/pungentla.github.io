@@ -14,6 +14,137 @@ body {
   min-height: 100vh;
 }
 
+.app-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-nav .brand {
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.app-nav .links a {
+  margin-left: 16px;
+  text-decoration: none;
+  color: #2c3e50;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.app-nav .links a:hover {
+  background: #ecf0f1;
+}
+
+.app-main {
+  padding: 12px;
+}
+
+.welcome-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 56px);
+  padding: 20px;
+}
+
+.welcome-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  max-width: 560px;
+  width: 100%;
+}
+
+.welcome-actions {
+  margin-top: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #2c3e50;
+  background: #ecf0f1;
+  margin: 0 8px;
+}
+
+.btn.primary {
+  background: #3498db;
+  color: #fff;
+}
+
+.birthday-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 56px);
+  padding: 20px;
+}
+
+.birthday-card {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #2c3e50;
+  border-radius: 16px;
+  padding: 40px 28px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+.birthday-card .title {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+
+.birthday-card .subtitle {
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+.candles {
+  margin-top: 24px;
+}
+
+.candle {
+  display: inline-block;
+  width: 10px;
+  height: 28px;
+  background: #f39c12;
+  margin: 0 6px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.candle::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 10px;
+  background: radial-gradient(circle at 50% 30%, #ffeaa7 0%, #fdcb6e 60%, transparent 70%);
+  border-radius: 50% 50% 30% 30%;
+  animation: flicker 1.2s infinite ease-in-out;
+}
+
+@keyframes flicker {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+  50% { transform: translateX(-50%) scale(0.9); opacity: 0.6; }
+}
+
 /* 自定义滚动条 */
 ::-webkit-scrollbar {
   width: 8px;
