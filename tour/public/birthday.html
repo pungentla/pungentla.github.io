@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>生日入口</title>
+</head>
+<body>
+  <script>
+    (function(){
+      var ts = Date.now();
+      var url = './index.html#/birthday?ts=' + ts;
+      location.replace(url);
+    })();
+  </script>
+  <noscript>
+    <p>正在跳转到生日页面… 如果未自动跳转，请打开 <a href="./index.html#/birthday">./index.html#/birthday</a></p>
+  </noscript>
+</body>
+</html>
