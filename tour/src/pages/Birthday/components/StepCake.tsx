@@ -11,26 +11,20 @@ export default function StepCake({
   const [candles, setCandles] = useState<boolean[]>(() =>
     Array.from({ length: 31 }, () => true)
   );
-  const [wobble, setWobble] = useState(false);
-  const { start, enabled } = useMicBlow(() => {
-    setCandles((arr) => arr.map(() => false));
-    setWobble(true);
-    setTimeout(() => setWobble(false), 600);
-  });
+  const { start, enabled } = useMicBlow(() =>
+    setCandles((arr) => arr.map(() => false))
+  );
   const beep = useBeep();
   const offCount = candles.filter((c) => !c).length;
   useEffect(() => {
     if (offCount === candles.length) setTimeout(onNext, 800);
   }, [offCount, candles.length, onNext]);
-  const swipeBlow = () => {
+  const swipeBlow = () =>
     setCandles((arr) => arr.map((v, i) => (i % 2 === 0 ? false : v)));
-    setWobble(true);
-    setTimeout(() => setWobble(false), 600);
-  };
   return (
     <div>
       <h2 className="title">吹灭 31 根蜡烛</h2>
-      <div className={`cake${wobble ? " wobble" : ""}`}>
+      <div className="cake">
         <div className="candles">
           {candles.map((on, i) => (
             <div
@@ -38,8 +32,6 @@ export default function StepCake({
               className={`candle ${on ? "" : "off"}`}
               onClick={() => {
                 setCandles((arr) => arr.map((v, k) => (k === i ? false : v)));
-                setWobble(true);
-                setTimeout(() => setWobble(false), 600);
                 beep(300 + (i % 5) * 40, 80, "sine");
               }}
             >

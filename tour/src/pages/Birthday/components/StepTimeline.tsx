@@ -90,10 +90,7 @@ export default function StepTimeline({
               key={i}
               style={{ flex: `0 0 ${100 / items.length}%` }}
             >
-              <div
-                className="node-card"
-                data-active={i === index ? "true" : "false"}
-              >
+              <div className="node-card">
                 <div className="node-icons">{it.icon}</div>
                 <h3>{it.title}</h3>
                 <p className="subtitle">{it.text}</p>
