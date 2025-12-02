@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Tour from "./pages/Tour";
-import BirthdayPage from "./pages/Birthday";
-import WelcomePage from "./pages/Welcome";
+const Tour = React.lazy(() => import("./pages/Tour"));
+const BirthdayPage = React.lazy(() => import("./pages/Birthday"));
+const WelcomePage = React.lazy(() => import("./pages/Welcome"));
 
 function App() {
   return (
@@ -16,12 +16,14 @@ function App() {
         </div>
       </nav> */}
       <main className="app-main">
-        <Routes>
-          <Route path="/" element={<Navigate to="/tour" replace />} />
-          <Route path="/tour" element={<Tour />} />
-          <Route path="/birthday" element={<BirthdayPage />} />
-          <Route path="*" element={<WelcomePage />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Navigate to="/tour" replace />} />
+            <Route path="/tour" element={<Tour />} />
+            <Route path="/birthday" element={<BirthdayPage />} />
+            <Route path="*" element={<WelcomePage />} />
+          </Routes>
+        </Suspense>
       </main>
     </div>
   );
