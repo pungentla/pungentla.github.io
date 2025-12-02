@@ -4,17 +4,45 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>生日入口</title>
+  <link rel="icon" href="./logo.png" />
 </head>
 <body>
+  <div id="root"></div>
   <script>
-    (function(){
-      var ts = Date.now();
-      var url = './index.html#/birthday?ts=' + ts;
-      location.replace(url);
+    // 标记独立生日入口，应用将直接渲染生日页
+    window.__BIRTHDAY_ENTRY__ = true;
+    // 动态加载构建产物，避免哈希文件名带来的引用问题
+    (function() {
+      function appendCSS(href) {
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = href;
+        document.head.appendChild(l);
+      }
+      function appendJS(src) {
+        var s = document.createElement('script');
+        s.defer = true;
+        s.src = src;
+        document.body.appendChild(s);
+      }
+      fetch('./asset-manifest.json')
+        .then(function(r){ return r.json(); })
+        .then(function(manifest){
+          var files = manifest && manifest.files || {};
+          var mainCss = files['main.css'];
+          var mainJs = files['main.js'];
+          if (mainCss) appendCSS(mainCss);
+          if (mainJs) appendJS(mainJs);
+        })
+        .catch(function(){
+          // 失败回退：直接尝试加载默认文件名（可能不存在）
+          appendCSS('./static/css/main.css');
+          appendJS('./static/js/main.js');
+        });
     })();
   </script>
   <noscript>
-    <p>正在跳转到生日页面… 如果未自动跳转，请打开 <a href="./index.html#/birthday">./index.html#/birthday</a></p>
+    <p>需要启用 JavaScript 才能打开生日页面。</p>
   </noscript>
 </body>
 </html>
