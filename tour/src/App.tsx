@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 const Tour = React.lazy(() => import("./pages/Tour"));
-const BirthdayPage = React.lazy(() => import("./pages/Birthday"));
 const WelcomePage = React.lazy(() => import("./pages/Welcome"));
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/tour" replace />} />
             <Route path="/tour" element={<Tour />} />
-            <Route path="/birthday" element={<BirthdayPage />} />
             <Route path="*" element={<WelcomePage />} />
           </Routes>
         </Suspense>
